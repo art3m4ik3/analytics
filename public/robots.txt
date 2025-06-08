@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+Disallow: 
+
+# Host
+Host: https://analytics.ll-u.ru
+
+# Sitemaps
+Sitemap: https://analytics.ll-u.ru/sitemap.xml
