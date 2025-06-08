@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import "./globals.css";
 import { Suspense } from "react";
@@ -88,15 +87,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider>
-          {children}
-          <Toaster />
-          <GoogleAnalytics gaId="G-L8J712K3Y5" />
-          <Suspense>
-            <Metrika />
-            <Script async defer src="/api/script?id=bed606c8d3494e5d" />
-          </Suspense>
-        </ThemeProvider>
+        {children}
+        <Toaster />
+        <GoogleAnalytics gaId="G-L8J712K3Y5" />
+        <Suspense>
+          <Metrika />
+          <Script async defer src="/api/script?id=bed606c8d3494e5d" />
+        </Suspense>
       </body>
     </html>
   );

@@ -45,7 +45,7 @@ const faqData = [
 
 export default function HelpPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
       <Navigation />
 
       <div className="container mx-auto max-w-6xl px-4 py-16 pt-32">
@@ -58,8 +58,8 @@ export default function HelpPage() {
           <div>
             <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
               Помощь и FAQ
-            </h1>
-            <p className="text-gray-600 dark:text-gray-300">
+            </h1>{" "}
+            <p className="text-gray-300">
               Ответы на часто задаваемые вопросы о веб-аналитике
             </p>
           </div>
@@ -71,20 +71,18 @@ export default function HelpPage() {
           {faqData.map((faq, index) => (
             <Card
               key={index}
-              className="border-0 shadow-lg bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm"
+              className="border-0 shadow-lg bg-slate-800/80 backdrop-blur-sm"
             >
               <CardHeader>
                 <CardTitle className="flex items-start gap-3 text-lg">
-                  <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/50 rounded-full flex items-center justify-center text-xs font-medium text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0">
+                  <div className="w-6 h-6 bg-blue-900/50 rounded-full flex items-center justify-center text-xs font-medium text-blue-400 mt-1 flex-shrink-0">
                     {index + 1}
                   </div>
                   {faq.question}
                 </CardTitle>
               </CardHeader>
               <CardContent className="pl-12">
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {faq.answer}
-                </p>
+                <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
               </CardContent>
             </Card>
           ))}

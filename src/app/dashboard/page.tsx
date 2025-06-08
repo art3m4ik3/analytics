@@ -90,24 +90,22 @@ export default function DashboardPage() {
   const handleSettings = (counterId: string) => {
     router.push(`/stats/${counterId}`);
   };
-
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
         <Navigation />
         <div className="container max-w-6xl mx-auto px-4 py-16 pt-32">
           <div className="flex justify-center items-center min-h-[400px]">
-            <div className="w-8 h-8 border-4 border-blue-600/30 border-t-blue-600 rounded-full animate-spin"></div>
+            <div className="w-8 h-8 border-4 border-blue-400/30 border-t-blue-400 rounded-full animate-spin"></div>
           </div>
         </div>
         <Footer />
       </div>
     );
   }
-
   if (!token || counters.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
         <Navigation />
         <div className="container max-w-6xl mx-auto px-4 py-16 pt-32">
           <div className="max-w-2xl mx-auto text-center">
@@ -121,40 +119,40 @@ export default function DashboardPage() {
               Добро пожаловать в Analytics
             </h1>
 
-            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
+            <p className="text-xl text-gray-300 mb-8">
               У вас пока нет счетчиков аналитики. Создайте первый счетчик, чтобы
               начать отслеживать посетителей вашего сайта.
             </p>
 
-            <Card className="border-0 shadow-xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm mb-8">
+            <Card className="border-0 shadow-xl bg-slate-800/80 backdrop-blur-sm mb-8">
               <CardContent className="p-8 pt-8">
                 <div className="grid md:grid-cols-3 gap-6 text-left">
                   <div className="flex flex-col items-center text-center">
-                    <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/50 rounded-xl flex items-center justify-center mb-4">
-                      <Plus className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                    {" "}
+                    <div className="w-12 h-12 bg-blue-900/50 rounded-xl flex items-center justify-center mb-4">
+                      <Plus className="h-6 w-6 text-blue-400" />
                     </div>
                     <h3 className="font-semibold mb-2">Создайте счетчик</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                    <p className="text-sm text-gray-400">
                       Настройте отслеживание для вашего сайта
                     </p>
-                  </div>
-
+                  </div>{" "}
                   <div className="flex flex-col items-center text-center">
-                    <div className="w-12 h-12 bg-green-100 dark:bg-green-900/50 rounded-xl flex items-center justify-center mb-4">
-                      <Globe className="h-6 w-6 text-green-600 dark:text-green-400" />
+                    <div className="w-12 h-12 bg-green-900/50 rounded-xl flex items-center justify-center mb-4">
+                      <Globe className="h-6 w-6 text-green-400" />
                     </div>
                     <h3 className="font-semibold mb-2">Установите код</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                    <p className="text-sm text-gray-400">
                       Добавьте код отслеживания на сайт
                     </p>
                   </div>
-
                   <div className="flex flex-col items-center text-center">
-                    <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/50 rounded-xl flex items-center justify-center mb-4">
-                      <TrendingUp className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+                    <div className="w-12 h-12 bg-purple-900/50 rounded-xl flex items-center justify-center mb-4">
+                      {" "}
+                      <TrendingUp className="h-6 w-6 text-purple-400" />
                     </div>
                     <h3 className="font-semibold mb-2">Анализируйте</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                    <p className="text-sm text-gray-400">
                       Изучайте поведение посетителей
                     </p>
                   </div>
@@ -178,7 +176,7 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
       <Navigation />{" "}
       <div className="container max-w-7xl mx-auto px-4 py-16 pt-32">
         <div className="max-w-6xl mx-auto">
@@ -187,7 +185,7 @@ export default function DashboardPage() {
               <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
                 Панель управления
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300">
+              <p className="text-xl text-gray-300">
                 Управляйте вашими счетчиками аналитики
               </p>
             </div>
@@ -202,7 +200,7 @@ export default function DashboardPage() {
           </div>
 
           <div className="grid gap-6 mb-8">
-            <Card className="border-0 shadow-lg bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm">
+            <Card className="border-0 shadow-lg bg-slate-800/80 backdrop-blur-sm">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <BarChart3 className="h-5 w-5" />
@@ -214,37 +212,30 @@ export default function DashboardPage() {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <div className="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-1">
+                  {" "}
+                  <div className="text-center p-4 bg-blue-900/20 rounded-lg">
+                    <div className="text-2xl font-bold text-blue-400 mb-1">
                       {counters.length}
-                    </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
-                      Всего счетчиков
-                    </div>
+                    </div>{" "}
+                    <div className="text-sm text-gray-400">Всего счетчиков</div>
                   </div>
-                  <div className="text-center p-4 bg-green-50 dark:bg-green-900/20 rounded-lg">
-                    <div className="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">
+                  <div className="text-center p-4 bg-green-900/20 rounded-lg">
+                    <div className="text-2xl font-bold text-green-400 mb-1">
                       {counters.filter((c) => c.isActive).length}
                     </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
-                      Активных
-                    </div>
+                    <div className="text-sm text-gray-400">Активных</div>
                   </div>
-                  <div className="text-center p-4 bg-purple-50 dark:bg-purple-900/20 rounded-lg">
-                    <div className="text-2xl font-bold text-purple-600 dark:text-purple-400 mb-1">
+                  <div className="text-center p-4 bg-purple-900/20 rounded-lg">
+                    <div className="text-2xl font-bold text-purple-400 mb-1">
                       {new Set(counters.map((c) => c.domain)).size}
                     </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
-                      Доменов
-                    </div>
+                    <div className="text-sm text-gray-400">Доменов</div>
                   </div>
-                  <div className="text-center p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg">
-                    <div className="text-2xl font-bold text-orange-600 dark:text-orange-400 mb-1">
+                  <div className="text-center p-4 bg-orange-900/20 rounded-lg">
+                    <div className="text-2xl font-bold text-orange-400 mb-1">
                       24/7
                     </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
-                      Мониторинг
-                    </div>
+                    <div className="text-sm text-gray-400">Мониторинг</div>
                   </div>
                 </div>
               </CardContent>
@@ -252,15 +243,13 @@ export default function DashboardPage() {
           </div>
 
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-              Ваши счетчики
-            </h2>
+            <h2 className="text-2xl font-bold text-white">Ваши счетчики</h2>
 
             <div className="grid gap-6">
               {counters.map((counter) => (
                 <Card
                   key={counter.id}
-                  className="border-0 shadow-lg hover:shadow-xl transition-all duration-200 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm group"
+                  className="border-0 shadow-lg hover:shadow-xl transition-all duration-200 bg-slate-800/80 backdrop-blur-sm group"
                 >
                   <CardContent className="p-6 pt-6">
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
@@ -270,17 +259,18 @@ export default function DashboardPage() {
                             <BarChart3 className="h-5 w-5 text-white" />
                           </div>
                           <div>
-                            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                            {" "}
+                            <h3 className="text-xl font-semibold text-white">
                               {counter.name}
                             </h3>
-                            <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                            <div className="flex items-center gap-2 text-sm text-gray-400">
                               <Globe className="h-4 w-4" />
                               {counter.domain}
                             </div>
                           </div>
                         </div>
 
-                        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+                        <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400">
                           <div className="flex items-center gap-1">
                             <Calendar className="h-4 w-4" />
                             Создан {formatDate(counter.createdAt)}
@@ -289,7 +279,7 @@ export default function DashboardPage() {
                             variant={counter.isActive ? "default" : "secondary"}
                             className={
                               counter.isActive
-                                ? "bg-green-100 text-green-800 border-green-200 dark:bg-green-900/20 dark:text-green-400 dark:border-green-800"
+                                ? "bg-green-900/20 text-green-400 border-green-800"
                                 : ""
                             }
                           >
@@ -311,7 +301,7 @@ export default function DashboardPage() {
                           onClick={() => handleSettings(counter.id)}
                           variant="outline"
                           size="icon"
-                          className="hover:bg-gray-100 dark:hover:bg-gray-800"
+                          className="hover:bg-gray-800"
                         >
                           <Settings className="h-4 w-4" />
                         </Button>

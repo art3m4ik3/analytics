@@ -173,7 +173,7 @@ export function CreateCounter({
             </div>
 
             {error && (
-              <div className="p-3 text-sm text-red-600 bg-red-50 border border-red-200 rounded-md dark:bg-red-900/20 dark:border-red-800 dark:text-red-400">
+              <div className="p-3 text-sm text-red-400 bg-red-900/20 border border-red-800 rounded-md">
                 {error}
               </div>
             )}
@@ -195,19 +195,19 @@ export function CreateCounter({
         </CardContent>
       </Card>{" "}
       {scriptUrl && (
-        <Card className="border-2 border-green-200 bg-green-50/50 dark:border-green-800 dark:bg-green-900/10">
+        <Card className="border-2 border-green-800 bg-green-900/10">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-green-800 dark:text-green-200">
+            <CardTitle className="flex items-center gap-2 text-green-200">
               <Code className="h-5 w-5" />
               Код для установки
               <Badge
                 variant="secondary"
-                className="bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-100"
+                className="bg-green-800 text-green-100"
               >
                 Готов к использованию
               </Badge>
             </CardTitle>
-            <CardDescription className="text-green-700 dark:text-green-300">
+            <CardDescription className="text-green-300">
               Скопируйте и вставьте этот код в тег &lt;head&gt; вашего сайта
             </CardDescription>
           </CardHeader>
@@ -228,12 +228,10 @@ export function CreateCounter({
                   <Copy className="h-4 w-4 text-slate-400" />
                 )}
               </Button>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4">
-              <div className="flex items-start gap-3 p-3 bg-white rounded-lg border dark:bg-slate-800">
-                <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center dark:bg-blue-900">
-                  <BarChart3 className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+            </div>            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4">
+              <div className="flex items-start gap-3 p-3 bg-slate-800 rounded-lg border">
+                <div className="w-8 h-8 bg-blue-900 rounded-lg flex items-center justify-center">
+                  <BarChart3 className="h-4 w-4 text-blue-400" />
                 </div>
                 <div>
                   <h4 className="font-medium text-sm">
@@ -243,11 +241,9 @@ export function CreateCounter({
                     Отслеживание всех переходов по страницам
                   </p>
                 </div>
-              </div>
-
-              <div className="flex items-start gap-3 p-3 bg-white rounded-lg border dark:bg-slate-800">
-                <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center dark:bg-purple-900">
-                  <Zap className="h-4 w-4 text-purple-600 dark:text-purple-400" />
+              </div>              <div className="flex items-start gap-3 p-3 bg-slate-800 rounded-lg border">
+                <div className="w-8 h-8 bg-purple-900 rounded-lg flex items-center justify-center">
+                  <Zap className="h-4 w-4 text-purple-400" />
                 </div>
                 <div>
                   <h4 className="font-medium text-sm">Цели через JS</h4>
@@ -255,11 +251,9 @@ export function CreateCounter({
                     analytics.goal(&apos;название&apos;)
                   </p>
                 </div>
-              </div>
-
-              <div className="flex items-start gap-3 p-3 bg-white rounded-lg border dark:bg-slate-800">
-                <div className="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center dark:bg-emerald-900">
-                  <Globe className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+              </div>              <div className="flex items-start gap-3 p-3 bg-slate-800 rounded-lg border">
+                <div className="w-8 h-8 bg-emerald-900 rounded-lg flex items-center justify-center">
+                  <Globe className="h-4 w-4 text-emerald-400" />
                 </div>
                 <div>
                   <h4 className="font-medium text-sm">Реальное время</h4>

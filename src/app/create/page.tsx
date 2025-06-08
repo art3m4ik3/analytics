@@ -4,12 +4,28 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { Copy, Check, Globe, Tag, Code, Zap, BarChart3, ArrowLeft, Plus } from "lucide-react";
+import {
+  Copy,
+  Check,
+  Globe,
+  Tag,
+  Code,
+  Zap,
+  BarChart3,
+  ArrowLeft,
+  Plus,
+} from "lucide-react";
 
 interface Counter {
   id: string;
@@ -70,16 +86,22 @@ export default function CreateCounterPage() {
         }
 
         setCreatedCounter(newCounter);
-        setScriptUrl(`${window.location.origin}/api/script?id=${newCounter.id}`);
+        setScriptUrl(
+          `${window.location.origin}/api/script?id=${newCounter.id}`,
+        );
 
         const savedCounters = localStorage.getItem("analytics_counters");
         const existingCounters = savedCounters ? JSON.parse(savedCounters) : [];
         const updatedCounters = [newCounter, ...existingCounters];
-        localStorage.setItem("analytics_counters", JSON.stringify(updatedCounters));
+        localStorage.setItem(
+          "analytics_counters",
+          JSON.stringify(updatedCounters),
+        );
 
         toast({
           title: "Счетчик создан!",
-          description: "Теперь вы можете установить код отслеживания на свой сайт.",
+          description:
+            "Теперь вы можете установить код отслеживания на свой сайт.",
         });
       } else {
         setError(data.error || "Произошла ошибка при создании счетчика");
@@ -96,7 +118,7 @@ export default function CreateCounterPage() {
     if (scriptUrl) {
       try {
         await navigator.clipboard.writeText(
-          `<script defer async src="${scriptUrl}"></script>`
+          `<script defer async src="${scriptUrl}"></script>`,
         );
         setCopied(true);
         toast({
@@ -112,7 +134,7 @@ export default function CreateCounterPage() {
 
   if (createdCounter) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
         <Navigation />
 
         <div className="container max-w-6xl mx-auto px-4 py-16 pt-32">
@@ -126,21 +148,25 @@ export default function CreateCounterPage() {
               <h1 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-4">
                 Счетчик успешно создан!
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Теперь установите код отслеживания на ваш сайт, чтобы начать собирать данные о посетителях.
+              <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+                Теперь установите код отслеживания на ваш сайт, чтобы начать
+                собирать данные о посетителях.
               </p>
-            </div>
-
+            </div>{" "}
             <div className="grid md:grid-cols-2 gap-8 mb-12">
-              <Card className="border-0 shadow-lg bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
+              <Card className="border-0 shadow-lg bg-slate-800/70 backdrop-blur-sm">
                 <CardHeader>
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/50 rounded-lg flex items-center justify-center">
-                      <BarChart3 className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                    <div className="w-10 h-10 bg-blue-900/50 rounded-lg flex items-center justify-center">
+                      <BarChart3 className="h-5 w-5 text-blue-400" />
                     </div>
                     <div>
-                      <CardTitle className="text-lg">Информация о счетчике</CardTitle>
-                      <CardDescription>Детали вашего нового счетчика</CardDescription>
+                      <CardTitle className="text-lg">
+                        Информация о счетчике
+                      </CardTitle>
+                      <CardDescription>
+                        Детали вашего нового счетчика
+                      </CardDescription>
                     </div>
                   </div>
                 </CardHeader>
@@ -148,38 +174,44 @@ export default function CreateCounterPage() {
                   <div className="flex items-center gap-3">
                     <Tag className="h-4 w-4 text-gray-500" />
                     <div>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">Название</p>
+                      <p className="text-sm text-gray-400">Название</p>
                       <p className="font-medium">{createdCounter.name}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <Globe className="h-4 w-4 text-gray-500" />
                     <div>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">Домен</p>
+                      <p className="text-sm text-gray-400">Домен</p>
                       <p className="font-medium">{createdCounter.domain}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="w-4 h-4 bg-green-500 rounded-full" />
                     <div>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">Статус</p>
-                      <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
+                      <p className="text-sm text-gray-400">Статус</p>
+                      <Badge
+                        variant="outline"
+                        className="bg-green-900/20 text-green-400 border-green-800"
+                      >
                         Активен
                       </Badge>
                     </div>
                   </div>
                 </CardContent>
-              </Card>
-
-              <Card className="border-0 shadow-lg bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm">
+              </Card>{" "}
+              <Card className="border-0 shadow-lg bg-slate-800/70 backdrop-blur-sm">
                 <CardHeader>
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900/50 rounded-lg flex items-center justify-center">
-                      <Code className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+                    <div className="w-10 h-10 bg-purple-900/50 rounded-lg flex items-center justify-center">
+                      <Code className="h-5 w-5 text-purple-400" />
                     </div>
                     <div>
-                      <CardTitle className="text-lg">Код отслеживания</CardTitle>
-                      <CardDescription>Установите этот код на ваш сайт</CardDescription>
+                      <CardTitle className="text-lg">
+                        Код отслеживания
+                      </CardTitle>
+                      <CardDescription>
+                        Установите этот код на ваш сайт
+                      </CardDescription>
                     </div>
                   </div>
                 </CardHeader>
@@ -201,41 +233,52 @@ export default function CreateCounterPage() {
                       )}
                     </Button>
                   </div>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Добавьте этот код в секцию &lt;head&gt; вашего сайта для начала отслеживания.
+                  <p className="text-sm text-gray-400">
+                    Добавьте этот код в секцию &lt;head&gt; вашего сайта для
+                    начала отслеживания.
                   </p>
                 </CardContent>
               </Card>
             </div>
-
             <Card className="border-0 shadow-lg bg-gradient-to-r from-blue-600 to-purple-600 text-white mb-8">
               <CardContent className="p-8 pt-8">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
+                  {" "}
+                  <div className="w-12 h-12 bg-slate-800/50 rounded-lg flex items-center justify-center">
                     <Zap className="h-6 w-6 text-white" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold">Что дальше?</h3>
-                    <p className="opacity-90">Следующие шаги для настройки аналитики</p>
+                    <p className="opacity-90">
+                      Следующие шаги для настройки аналитики
+                    </p>
                   </div>
                 </div>
                 <div className="grid md:grid-cols-3 gap-4 text-sm">
-                  <div className="bg-white/10 rounded-lg p-4">
+                  {" "}
+                  <div className="bg-slate-800/50 rounded-lg p-4">
                     <div className="font-semibold mb-2">1. Установите код</div>
-                    <p className="opacity-90">Добавьте код отслеживания в HTML вашего сайта</p>
+                    <p className="opacity-90">
+                      Добавьте код отслеживания в HTML вашего сайта
+                    </p>
                   </div>
-                  <div className="bg-white/10 rounded-lg p-4">
-                    <div className="font-semibold mb-2">2. Проверьте работу</div>
-                    <p className="opacity-90">Перейдите на сайт и убедитесь, что данные поступают</p>
+                  <div className="bg-slate-800/50 rounded-lg p-4">
+                    <div className="font-semibold mb-2">
+                      2. Проверьте работу
+                    </div>
+                    <p className="opacity-90">
+                      Перейдите на сайт и убедитесь, что данные поступают
+                    </p>
                   </div>
-                  <div className="bg-white/10 rounded-lg p-4">
+                  <div className="bg-slate-800/50 rounded-lg p-4">
                     <div className="font-semibold mb-2">3. Анализируйте</div>
-                    <p className="opacity-90">Изучайте статистику в панели управления</p>
+                    <p className="opacity-90">
+                      Изучайте статистику в панели управления
+                    </p>
                   </div>
                 </div>
               </CardContent>
             </Card>
-
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 onClick={() => router.push(`/stats/${createdCounter.id}`)}
@@ -250,8 +293,7 @@ export default function CreateCounterPage() {
                 size="lg"
                 variant="outline"
               >
-                <ArrowLeft className="h-5 w-5 mr-2" />
-                К панели управления
+                <ArrowLeft className="h-5 w-5 mr-2" />К панели управления
               </Button>
               <Button
                 onClick={() => {
@@ -277,7 +319,7 @@ export default function CreateCounterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
       <Navigation />
 
       <div className="container max-w-6xl mx-auto px-4 py-16 pt-32">
@@ -291,14 +333,16 @@ export default function CreateCounterPage() {
             <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
               Создать новый счетчик
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300">
+            <p className="text-xl text-gray-300">
               Настройте отслеживание для вашего сайта за несколько минут
             </p>
           </div>
 
-          <Card className="border-0 shadow-xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm">
+          <Card className="border-0 shadow-xl bg-slate-800/80 backdrop-blur-sm">
             <CardHeader className="pb-6">
-              <CardTitle className="text-2xl text-center">Информация о сайте</CardTitle>
+              <CardTitle className="text-2xl text-center">
+                Информация о сайте
+              </CardTitle>
               <CardDescription className="text-center">
                 Введите данные вашего сайта для создания счетчика аналитики
               </CardDescription>
@@ -306,7 +350,10 @@ export default function CreateCounterPage() {
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium flex items-center gap-2">
+                  <label
+                    htmlFor="name"
+                    className="text-sm font-medium flex items-center gap-2"
+                  >
                     <Tag className="h-4 w-4" />
                     Название счетчика
                   </label>
@@ -325,7 +372,10 @@ export default function CreateCounterPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="domain" className="text-sm font-medium flex items-center gap-2">
+                  <label
+                    htmlFor="domain"
+                    className="text-sm font-medium flex items-center gap-2"
+                  >
                     <Globe className="h-4 w-4" />
                     Домен сайта
                   </label>
@@ -344,8 +394,8 @@ export default function CreateCounterPage() {
                 </div>
 
                 {error && (
-                  <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
-                    <p className="text-red-700 dark:text-red-400 text-sm">{error}</p>
+                  <div className="p-4 bg-red-900/20 border border-red-800 rounded-lg">
+                    <p className="text-red-400 text-sm">{error}</p>
                   </div>
                 )}
 
@@ -371,7 +421,7 @@ export default function CreateCounterPage() {
           </Card>
 
           <div className="mt-8 text-center">
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm text-gray-400">
               Уже есть счетчики?{" "}
               <Button
                 variant="link"

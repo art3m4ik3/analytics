@@ -336,7 +336,7 @@ export default function StatsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
         <Navigation />
         <div className="container mx-auto px-4 py-16">
           <div className="flex justify-center items-center min-h-[400px]">
@@ -350,15 +350,15 @@ export default function StatsPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-orange-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
         <Navigation />
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-2xl mx-auto text-center">
             <div className="text-6xl mb-6">📊</div>
-            <h1 className="text-3xl font-bold text-red-600 dark:text-red-400 mb-4">
+            <h1 className="text-3xl font-bold text-red-400 mb-4">
               Ошибка загрузки статистики
             </h1>
-            <p className="text-gray-600 dark:text-gray-400 mb-8">{error}</p>
+            <p className="text-gray-400 mb-8">{error}</p>
             <Button onClick={() => router.push("/dashboard")} variant="outline">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Вернуться к панели управления
@@ -371,7 +371,7 @@ export default function StatsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
       <Navigation />{" "}
       <div className="container max-w-7xl mx-auto px-4 py-16 pt-32">
         <div className="max-w-7xl mx-auto">
@@ -389,14 +389,14 @@ export default function StatsPage() {
                   {counter?.name || "Статистика"}
                 </h1>
                 {counter && (
-                  <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+                  <div className="flex items-center gap-2 text-gray-400">
                     <Globe className="h-4 w-4" />
                     {counter.domain}
                     <Badge
                       variant={counter.isActive ? "default" : "secondary"}
                       className={
                         counter.isActive
-                          ? "bg-green-100 text-green-800 border-green-200 dark:bg-green-900/20 dark:text-green-400 dark:border-green-800"
+                          ? "bg-green-900/20 text-green-400 border-green-800"
                           : ""
                       }
                     >
@@ -410,7 +410,7 @@ export default function StatsPage() {
               <select
                 value={timeRange}
                 onChange={(e) => setTimeRange(e.target.value)}
-                className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-slate-800"
+                className="px-3 py-2 border border-gray-600 rounded-lg bg-slate-800"
               >
                 <option value="1d">Сегодня</option>
                 <option value="7d">7 дней</option>
@@ -447,14 +447,14 @@ export default function StatsPage() {
                   <Download className="h-4 w-4" />
                 </Button>
                 {showExportMenu && (
-                  <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-slate-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-10">
+                  <div className="absolute right-0 mt-2 w-48 bg-slate-800 border border-gray-700 rounded-lg shadow-lg z-10">
                     <div className="py-1">
                       <button
                         onClick={() => {
                           exportToCSV();
                           setShowExportMenu(false);
                         }}
-                        className="w-full px-4 py-2 text-left text-sm hover:bg-gray-100 dark:hover:bg-slate-700 flex items-center gap-2"
+                        className="w-full px-4 py-2 text-left text-sm hover:bg-slate-700 flex items-center gap-2"
                       >
                         <Download className="h-4 w-4" />
                         Экспорт в CSV
@@ -464,7 +464,7 @@ export default function StatsPage() {
                           exportToJSON();
                           setShowExportMenu(false);
                         }}
-                        className="w-full px-4 py-2 text-left text-sm hover:bg-gray-100 dark:hover:bg-slate-700 flex items-center gap-2"
+                        className="w-full px-4 py-2 text-left text-sm hover:bg-slate-700 flex items-center gap-2"
                       >
                         <Download className="h-4 w-4" />
                         Экспорт в JSON
@@ -480,62 +480,60 @@ export default function StatsPage() {
             <div className="space-y-8">
               {" "}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <Card className="border-0 shadow-lg bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm min-h-[140px] pt-8">
+                <Card className="border-0 shadow-lg bg-slate-800/80 backdrop-blur-sm min-h-[140px] pt-8">
                   <CardContent className="p-6 flex items-center">
                     <div className="flex items-center justify-between w-full">
                       <div>
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                        <p className="text-sm text-gray-400 mb-2">
                           Просмотры страниц
                         </p>
-                        <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">
+                        <p className="text-3xl font-bold text-blue-400">
                           {formatNumber(stats?.totalPageviews || 0)}
                         </p>
-                      </div>
-                      <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/50 rounded-xl flex items-center justify-center">
-                        <Eye className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                      </div>{" "}
+                      <div className="w-12 h-12 bg-blue-900/50 rounded-xl flex items-center justify-center">
+                        <Eye className="h-6 w-6 text-blue-400" />
                       </div>
                     </div>
                   </CardContent>
-                </Card>
-
-                <Card className="border-0 shadow-lg bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm min-h-[140px] pt-8">
+                </Card>{" "}
+                <Card className="border-0 shadow-lg bg-slate-800/80 backdrop-blur-sm min-h-[140px] pt-8">
                   <CardContent className="p-6 flex items-center">
                     <div className="flex items-center justify-between w-full">
                       <div>
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                        <p className="text-sm text-gray-400 mb-2">
                           Уникальные посетители
                         </p>
-                        <p className="text-3xl font-bold text-green-600 dark:text-green-400">
+                        <p className="text-3xl font-bold text-green-400">
                           {formatNumber(stats?.uniqueVisitors || 0)}
                         </p>
                       </div>
-                      <div className="w-12 h-12 bg-green-100 dark:bg-green-900/50 rounded-xl flex items-center justify-center">
-                        <Users className="h-6 w-6 text-green-600 dark:text-green-400" />
+                      <div className="w-12 h-12 bg-green-900/50 rounded-xl flex items-center justify-center">
+                        <Users className="h-6 w-6 text-green-400" />
                       </div>
                     </div>
                   </CardContent>
-                </Card>
-
-                <Card className="border-0 shadow-lg bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm min-h-[140px] pt-8">
+                </Card>{" "}
+                <Card className="border-0 shadow-lg bg-slate-800/80 backdrop-blur-sm min-h-[140px] pt-8">
                   <CardContent className="p-6 flex items-center">
                     <div className="flex items-center justify-between w-full">
                       <div>
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                        <p className="text-sm text-gray-400 mb-2">
                           Показатель отказов
                         </p>
-                        <p className="text-3xl font-bold text-orange-600 dark:text-orange-400">
+                        <p className="text-3xl font-bold text-orange-400">
                           {stats?.bounceRate || 0}%
                         </p>
                       </div>
-                      <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/50 rounded-xl flex items-center justify-center">
-                        <TrendingUp className="h-6 w-6 text-orange-600 dark:text-orange-400" />
+                      <div className="w-12 h-12 bg-orange-900/50 rounded-xl flex items-center justify-center">
+                        <TrendingUp className="h-6 w-6 text-orange-400" />
                       </div>
                     </div>
                   </CardContent>
                 </Card>
               </div>
               <div className="grid lg:grid-cols-2 gap-8">
-                <Card className="border-0 shadow-lg bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm">
+                <Card className="border-0 shadow-lg bg-slate-800/80 backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <BarChart3 className="h-5 w-5" />
@@ -554,12 +552,12 @@ export default function StatsPage() {
                           className="flex items-center justify-between"
                         >
                           <div className="flex items-center gap-3">
-                            <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/50 rounded-full flex items-center justify-center text-xs font-medium text-blue-600 dark:text-blue-400">
+                            <div className="w-6 h-6 bg-blue-900/50 rounded-full flex items-center justify-center text-xs font-medium text-blue-400">
                               {index + 1}
                             </div>
                             <span className="font-medium">{page.path}</span>
                           </div>
-                          <span className="text-sm text-gray-600 dark:text-gray-400">
+                          <span className="text-sm text-gray-400">
                             {formatNumber(page.views)}
                           </span>
                         </div>
@@ -572,7 +570,7 @@ export default function StatsPage() {
                   </CardContent>
                 </Card>
 
-                <Card className="border-0 shadow-lg bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm">
+                <Card className="border-0 shadow-lg bg-slate-800/80 backdrop-blur-sm">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <Globe className="h-5 w-5" />
@@ -590,14 +588,14 @@ export default function StatsPage() {
                           className="flex items-center justify-between"
                         >
                           <div className="flex items-center gap-3">
-                            <div className="w-6 h-6 bg-green-100 dark:bg-green-900/50 rounded-full flex items-center justify-center text-xs font-medium text-green-600 dark:text-green-400">
+                            <div className="w-6 h-6 bg-green-900/50 rounded-full flex items-center justify-center text-xs font-medium text-green-400">
                               {index + 1}
                             </div>
                             <span className="font-medium">
                               {referrer.source}
                             </span>
                           </div>
-                          <span className="text-sm text-gray-600 dark:text-gray-400">
+                          <span className="text-sm text-gray-400">
                             {formatNumber(referrer.visits)}
                           </span>
                         </div>
@@ -610,7 +608,7 @@ export default function StatsPage() {
                   </CardContent>
                 </Card>
               </div>
-              <Card className="border-0 shadow-lg bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm">
+              <Card className="border-0 shadow-lg bg-slate-800/80 backdrop-blur-sm">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Calendar className="h-5 w-5" />
@@ -626,7 +624,7 @@ export default function StatsPage() {
                     {stats?.dailyStats?.map((day) => (
                       <div
                         key={day.date}
-                        className="flex items-center justify-between p-3 bg-gray-50 dark:bg-slate-700/50 rounded-lg"
+                        className="flex items-center justify-between p-3 bg-slate-700/50 rounded-lg"
                       >
                         <div className="font-medium">
                           {new Date(day.date).toLocaleDateString("ru-RU", {
@@ -658,10 +656,10 @@ export default function StatsPage() {
                   </div>
                 </CardContent>
               </Card>
-              <Card className="border-0 shadow-lg bg-gradient-to-r from-blue-50 to-purple-50 dark:from-slate-800/50 dark:to-slate-700/50 backdrop-blur-sm">
+              <Card className="border-0 shadow-lg bg-gradient-to-r from-slate-800/50 to-slate-700/50 backdrop-blur-sm">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Code className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                    <Code className="h-5 w-5 text-blue-400" />
                     Код для установки
                   </CardTitle>
                   <CardDescription>
@@ -670,7 +668,7 @@ export default function StatsPage() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="bg-gray-900 dark:bg-gray-950 rounded-lg p-4 relative">
+                  <div className="bg-gray-950 rounded-lg p-4 relative">
                     <pre className="text-sm text-gray-300 overflow-x-auto">
                       <code>{`<script async defer src="${window.location.origin}/api/script?id=${counterId}"></script>`}</code>
                     </pre>
@@ -693,7 +691,7 @@ export default function StatsPage() {
                       )}
                     </Button>
                   </div>
-                  <div className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+                  <div className="mt-4 text-sm text-gray-400">
                     <p className="mb-2">
                       <strong>Инструкция по установке:</strong>
                     </p>
